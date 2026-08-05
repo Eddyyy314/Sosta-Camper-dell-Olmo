@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f2318">
+  <title>Scopri Palinuro — Sosta Camper dell'Olmo</title>
+  <meta name="description" content="Scopri Palinuro: promontori mozzafiato, spiagge Bandiera Blu, trekking, borghi vicini e sapori del Cilento UNESCO.">
+  <link rel="canonical" href="https://sostacamperdellolmo.it/scopri-palinuro.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css"/>
+
+<style>
+:root {
+  --ink:#0d1a12; --deep:#0f2318; --forest:#1a3d28; --moss:#2a5c3f; --sage:#4e8c65;
+  --mist:#8bbfa0; --foam:#c4e8d4; --sand:#f2ece0; --linen:#faf8f3;
+  --sea:#0ea5a0; --aqua:#5ee8e0; --gold:#c8a84b; --sun:#f0d080; --white:#ffffff;
+  --ff-serif:'Cormorant Garamond',Georgia,serif;
+  --ff-sans:'Outfit',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-sans);background:var(--linen);color:var(--ink);overflow-x:hidden;cursor:none}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* cursor */
+#cur{position:fixed;width:10px;height:10px;background:var(--sea);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
+#cur-r{position:fixed;width:36px;height:36px;border:1.5px solid var(--sea);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s,height .35s,border-color .3s;opacity:.6}
+
+/* noise */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:9990}
+
+/* nav */
+nav.top{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;transition:background .5s,padding .4s}
+nav.top.solid{background:rgba(10,26,16,.95);backdrop-filter:blur(20px);padding:14px 56px;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nav-logo{width:50px;filter:brightness(0) invert(1);opacity:.9}
+.nav-links{display:flex;gap:40px;align-items:center}
+.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);position:relative;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:100%;height:1px;background:var(--aqua);transition:right .3s var(--ease)}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{right:0}
+.nav-btn{background:var(--sea);color:var(--deep);font-family:var(--ff-sans);font-size:.82rem;font-weight:600;letter-spacing:.06em;padding:10px 22px;border-radius:100px;transition:background .25s,transform .2s}
+.nav-btn:hover{background:var(--aqua);transform:translateY(-1px)}
+.nav-wa{background:#25D366;color:#fff;font-family:var(--ff-sans);font-size:.82rem;font-weight:600;padding:10px 20px;border-radius:100px;transition:background .25s}
+.nav-wa:hover{background:#1ebe5a}
+
+/* hero */
+.hero{min-height:100svh;background:var(--deep);position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;animation:sz 24s ease-in-out infinite alternate;filter:saturate(.8)}
+@keyframes sz{from{transform:scale(1.06)}to{transform:scale(1)}}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to top,var(--deep) 0%,rgba(10,26,16,.6) 45%,rgba(10,26,16,.15) 100%)}
+.hero-content{position:relative;z-index:10;padding:0 72px 100px;max-width:1100px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--aqua);margin-bottom:28px}
+.hero-eyebrow span{width:40px;height:1px;background:var(--aqua)}
+.hero-title{font-family:var(--ff-serif);font-size:clamp(3.5rem,8vw,8rem);font-weight:300;color:var(--white);line-height:.92;letter-spacing:-.02em}
+.hero-title em{font-style:italic;color:var(--sun);display:block}
+.hero-sub{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.5);max-width:480px;line-height:1.7;margin:28px 0 0}
+.hero-ticker{position:absolute;right:0;top:50%;transform:translateY(-50%) rotate(90deg) translateX(50%);transform-origin:right center;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:16px}
+.hero-ticker::before{content:'';width:60px;height:1px;background:rgba(255,255,255,.18)}
+
+/* quick nav */
+.qnav{background:var(--deep);padding:20px 72px;display:flex;gap:10px;flex-wrap:wrap;overflow-x:auto;border-bottom:1px solid rgba(255,255,255,.06)}
+.chip{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border-radius:100px;border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.55);transition:background .25s,border-color .25s,color .25s;white-space:nowrap}
+.chip:hover{background:rgba(14,165,160,.15);border-color:var(--sea);color:var(--aqua)}
+
+/* shared layout */
+.s{padding:100px 72px}
+.s-alt{padding:100px 72px;background:var(--deep)}
+.s-sand{padding:100px 72px;background:var(--sand)}
+.wrap{max-width:1100px;margin:0 auto}
+.label{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:16px}
+.label::before{content:'';width:24px;height:1px;background:var(--sage)}
+.label-light{color:var(--aqua)}
+.label-light::before{background:var(--aqua)}
+.display{font-family:var(--ff-serif);font-size:clamp(2.2rem,4.5vw,4.5rem);font-weight:300;line-height:1.05;letter-spacing:-.02em;color:var(--forest)}
+.display em{font-style:italic;color:var(--sea)}
+.display-light{color:var(--foam)}
+.display-light em{color:var(--aqua)}
+.body-t{font-size:1rem;font-weight:300;color:#3d5545;line-height:1.8}
+.body-t-light{font-size:1rem;font-weight:300;color:rgba(255,255,255,.45);line-height:1.8}
+
+/* ── STORIA & QUALITÀ ── */
+.dbl{display:grid;grid-template-columns:1fr 1px 1fr;gap:0;align-items:stretch}
+.dbl-div{background:rgba(255,255,255,.07);width:1px;margin:0 72px}
+.dbl-l{padding-right:0}
+.dbl-r{padding-left:0}
+.storia-media{display:flex;gap:28px;align-items:flex-start;margin-top:24px}
+.storia-img{width:140px;flex-shrink:0;border-radius:14px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.2)}
+.storia-img img{width:100%;height:180px;object-fit:cover;object-position:50% 18%}
+.storia-text{flex:1}
+.q-items{display:flex;flex-direction:column;gap:20px;margin-top:24px}
+.q-item{display:flex;gap:18px;align-items:flex-start}
+.q-dot{width:36px;height:36px;border-radius:10px;background:rgba(94,232,224,.1);border:1px solid rgba(94,232,224,.25);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.q-item h4{font-family:var(--ff-serif);font-size:1.1rem;font-weight:600;color:var(--foam);margin-bottom:5px}
+.q-item p{font-size:.88rem;color:rgba(255,255,255,.42);font-weight:300;line-height:1.7}
+
+/* ── POI — cosa vedere ── */
+.poi-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
+.poi-grid{display:flex;flex-direction:column;gap:0}
+.poi{display:grid;grid-template-columns:340px 1fr;gap:0;border-top:1px solid var(--foam);padding:48px 0;align-items:center;transition:background .25s}
+.poi:last-child{border-bottom:1px solid var(--foam)}
+.poi:hover{background:rgba(14,165,160,.04)}
+.poi-img{border-radius:16px;overflow:hidden;height:220px;margin-right:56px;position:relative}
+.poi-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.poi:hover .poi-img img{transform:scale(1.05)}
+.poi-num{font-family:var(--ff-serif);font-size:.78rem;letter-spacing:.15em;color:var(--mist);margin-bottom:10px;font-weight:600}
+.poi h3{font-family:var(--ff-serif);font-size:1.9rem;font-weight:600;color:var(--forest);line-height:1.1;margin-bottom:14px}
+.poi p{font-size:.95rem;color:#3d5545;font-weight:300;line-height:1.8}
+
+/* ── TREKKING ── */
+.trek-list{display:flex;flex-direction:column;gap:12px;margin-top:40px}
+.trek-item{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-radius:14px;border:1.5px solid var(--foam);background:#fff;transition:border-color .3s,transform .25s var(--ease),background .3s}
+.trek-item:hover{border-color:var(--sea);transform:translateX(8px);background:var(--linen)}
+.trek-left{display:flex;align-items:center;gap:18px}
+.trek-icon{width:44px;height:44px;border-radius:12px;background:var(--foam);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.trek-name{font-family:var(--ff-serif);font-size:1.2rem;font-weight:600;color:var(--forest)}
+.trek-desc{font-size:.82rem;color:var(--mist);margin-top:2px}
+.trek-tag{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:100px;border:1px solid var(--foam);color:var(--sage)}
+
+/* ── ATTIVITÀ & SAPORI ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.box-dark{background:var(--deep);border-radius:24px;padding:48px;border:1px solid rgba(255,255,255,.06)}
+.box-light{background:#fff;border-radius:24px;padding:48px;border:1px solid var(--foam)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:100px;background:rgba(94,232,224,.08);border:1.5px solid rgba(94,232,224,.2);font-size:.85rem;color:rgba(255,255,255,.7);font-weight:300;transition:background .25s,border-color .25s,transform .2s var(--ease)}
+.pill:hover{background:rgba(94,232,224,.15);border-color:var(--aqua);transform:translateY(-2px)}
+.sapori-list{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.sapore{display:flex;align-items:center;gap:16px}
+.sapore-dot{width:8px;height:8px;border-radius:50%;background:var(--sea);flex-shrink:0}
+.sapore-txt strong{font-weight:600;color:var(--forest);font-size:.95rem}
+.sapore-txt span{font-size:.82rem;color:var(--mist);display:block;margin-top:1px}
+
+/* ── STAGIONI ── */
+.stagioni{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stagione{border-radius:20px;padding:36px 28px;position:relative;overflow:hidden;cursor:default;transition:transform .3s var(--ease)}
+.stagione:hover{transform:translateY(-6px)}
+.st-1{background:linear-gradient(145deg,#1a4d35,#2d7a4f)}
+.st-2{background:linear-gradient(145deg,#0a4d45,#0ea5a0)}
+.st-3{background:linear-gradient(145deg,#4d3a0a,#c8a84b)}
+.st-4{background:linear-gradient(145deg,#1a3d4d,#2a6c8f)}
+.stagione::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.06)}
+.st-month{font-family:var(--ff-serif);font-size:1.6rem;font-weight:600;color:#fff;margin-bottom:6px}
+.st-temp{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:18px}
+.st-desc{font-size:.88rem;color:rgba(255,255,255,.72);font-weight:300;line-height:1.65}
+
+/* ── GALLERY STRIP ── */
+.gal-strip{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:240px 240px;gap:10px}
+.gs{border-radius:14px;overflow:hidden;position:relative}
+.gs img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .4s;filter:saturate(.9)}
+.gs:hover img{transform:scale(1.07);filter:saturate(1.15)}
+.gs::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,26,16,.5),transparent 60%);opacity:0;transition:opacity .3s}
+.gs:hover::after{opacity:1}
+.gs-1{grid-column:1/5;grid-row:1/3}
+.gs-2{grid-column:5/8;grid-row:1/2}
+.gs-3{grid-column:8/13;grid-row:1/2}
+.gs-4{grid-column:5/9;grid-row:2/3}
+.gs-5{grid-column:9/13;grid-row:2/3}
+
+/* ── CTA strip ── */
+.cta-strip{background:linear-gradient(135deg,var(--sea) 0%,#0a7a75 100%);padding:100px 72px;display:flex;align-items:center;justify-content:space-between;gap:40px;overflow:hidden;position:relative}
+.cta-strip::before{content:'';position:absolute;right:-200px;top:-200px;width:600px;height:600px;border-radius:50%;background:rgba(255,255,255,.07)}
+.cta-strip h2{font-family:var(--ff-serif);font-size:clamp(2rem,4vw,3.8rem);font-weight:300;color:#fff;line-height:1.1;position:relative;z-index:1}
+.cta-strip h2 em{font-style:italic}
+.cta-btns{display:flex;gap:14px;flex-shrink:0;position:relative;z-index:1}
+
+/* ── btns ── */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-sans);font-size:.88rem;font-weight:600;letter-spacing:.04em;padding:15px 32px;border-radius:100px;border:none;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s,background .25s,color .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-sea{background:var(--sea);color:var(--deep);box-shadow:0 4px 24px rgba(14,165,160,.35)}
+.btn-sea:hover{background:var(--aqua);box-shadow:0 8px 36px rgba(14,165,160,.5)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.6);color:#fff}
+.btn-w{background:#fff;color:var(--sea);box-shadow:0 4px 24px rgba(0,0,0,.15)}
+.btn-wa{background:#25D366;color:#fff;box-shadow:0 4px 24px rgba(37,211,102,.3)}
+.btn-wa:hover{background:#1ebe5a}
+
+/* footer */
+footer{background:var(--ink);padding:48px 72px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.f-logo{width:44px;filter:brightness(0) invert(1);opacity:.45}
+footer p{font-size:.8rem;color:rgba(255,255,255,.28)}
+.f-links{display:flex;gap:24px}
+.f-links a{font-size:.8rem;color:rgba(255,255,255,.32);transition:color .2s}
+.f-links a:hover{color:rgba(255,255,255,.7)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv-l{opacity:0;transform:translateX(-40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv-r{opacity:0;transform:translateX(40px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.vis,.rv-l.vis,.rv-r.vis{opacity:1;transform:none}
+[data-d="1"]{transition-delay:.1s}[data-d="2"]{transition-delay:.2s}[data-d="3"]{transition-delay:.3s}[data-d="4"]{transition-delay:.4s}[data-d="5"]{transition-delay:.5s}
+
+/* hero entry */
+.hero-eyebrow{animation:hf 1s .3s both}
+.hero-title{animation:hf 1s .5s both}
+.hero-sub{animation:hf 1s .7s both}
+@keyframes hf{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+
+/* mobile */
+@media(max-width:900px){
+  nav.top{padding:16px 24px}nav.top.solid{padding:14px 24px}
+  .nav-links{display:none}
+  .hero-content{padding:0 24px 80px}
+  .s,.s-alt,.s-sand{padding:72px 24px}
+  .qnav{padding:16px 24px}
+  .dbl{grid-template-columns:1fr;gap:48px}
+  .dbl-div{display:none}
+  .storia-media{flex-direction:column}
+  .poi{grid-template-columns:1fr;gap:0}
+  .poi-img{height:200px;margin-right:0;margin-bottom:28px}
+  .two-col{grid-template-columns:1fr;gap:24px}
+  .stagioni{grid-template-columns:1fr 1fr;gap:12px}
+  .gal-strip{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+  .gs-1{grid-column:1/3;grid-row:1/2}.gs-2{grid-column:1/2;grid-row:2/3}.gs-3{grid-column:2/3;grid-row:2/3}.gs-4{grid-column:1/2;grid-row:3/4}.gs-5{grid-column:2/3;grid-row:3/4}
+  .cta-strip{flex-direction:column;padding:72px 24px;text-align:center}
+  .cta-btns{justify-content:center}
+  footer{flex-direction:column;align-items:flex-start;padding:40px 24px}
+  body{cursor:auto}
+  #cur,#cur-r{display:none}
+}
+
+
+/* ─── RESTYLING CHATGPT 2026 ─── */
+:root{
+  --radius-lg:28px;
+  --radius-md:18px;
+  --shadow-soft:0 24px 70px rgba(13,26,18,.14);
+  --shadow-card:0 16px 45px rgba(13,26,18,.10);
+}
+html{scroll-padding-top:86px}
+body{cursor:auto;background:radial-gradient(circle at top left,rgba(94,232,224,.10),transparent 34%),var(--linen)}
+#cur,#cur-r{display:none!important}
+::selection{background:rgba(14,165,160,.28);color:var(--deep)}
+a,button,.btn,.sc,.mcard,.gi,.poi,.chip,.trek-item,.stagione{cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid rgba(94,232,224,.75);outline-offset:4px}
+nav.top,#nav{width:min(1180px,calc(100% - 32px));left:50%;right:auto;top:16px;transform:translateX(-50%);padding:12px 16px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(15,35,24,.34);backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(0,0,0,.18)}
+nav.top.solid,#nav.solid{padding:10px 16px;background:rgba(13,26,18,.86);border-color:rgba(255,255,255,.12)}
+.nav-logo{width:44px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.35)) brightness(0) invert(1)}
+.nav-links{gap:26px}.nav-links a{color:rgba(255,255,255,.78)}
+.nav-wa,.nav-cta,.nav-btn{box-shadow:0 10px 26px rgba(14,165,160,.25)}
+.hero{border-bottom-left-radius:42px;border-bottom-right-radius:42px;box-shadow:0 30px 90px rgba(13,26,18,.22)}
+.hero-ov{background:linear-gradient(to top,var(--deep) 0%,rgba(10,26,16,.74) 38%,rgba(10,26,16,.10) 100%),radial-gradient(circle at 70% 30%,rgba(94,232,224,.22),transparent 34%)}
+.hero-title{text-wrap:balance;text-shadow:0 20px 70px rgba(0,0,0,.38)}
+.hero-sub{font-size:clamp(1rem,1.6vw,1.18rem);color:rgba(255,255,255,.72);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius-md);padding:18px 20px;backdrop-filter:blur(8px)}
+.hero-eyebrow,.label{border-radius:999px}.btn{box-shadow:none}.btn:hover{transform:translateY(-3px)}
+.btn-sea,.btn-wa,.btn-white,.btn-w{box-shadow:0 14px 34px rgba(14,165,160,.24)}
+.display{text-wrap:balance}.body-t,.body-t-light{font-size:1.03rem}.wrap{max-width:1160px}
+.feat,.form-card,.price-box,.box-dark,.box-light,.stagione{border-radius:var(--radius-lg);box-shadow:var(--shadow-card)}
+.feat-grid,.stagioni{gap:18px}.feat{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border-color:rgba(255,255,255,.10)}
+.mcard,.gi,.gs,.poi-img,.storia-img,.map-wrap{border-radius:22px;box-shadow:var(--shadow-card)}
+.mcard img,.gi img,.gs img,.poi-img img{filter:saturate(.96) contrast(1.03)}
+.gal-mosaic,.gal-strip{gap:14px}.sc,.trek-item{box-shadow:0 10px 30px rgba(13,26,18,.06);border-color:rgba(196,232,212,.9)}
+.sc:hover,.sc.act,.trek-item:hover{box-shadow:0 18px 44px rgba(14,165,160,.12)}
+.form-card{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035))}.fg input,.fg textarea,.price-box select{box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.cta-strip{border-radius:42px 42px 0 0}.cta-strip::after{content:'';position:absolute;inset:auto 8% -80px auto;width:260px;height:260px;border-radius:50%;background:rgba(240,208,128,.18);filter:blur(22px)}
+footer{background:linear-gradient(180deg,var(--deep),var(--ink))}.f-links a{padding:8px 0}
+.float-wa{position:fixed;right:22px;bottom:22px;z-index:700;display:inline-flex;align-items:center;gap:9px;padding:13px 18px;border-radius:999px;background:#25D366;color:#fff;font-weight:700;font-size:.9rem;box-shadow:0 18px 40px rgba(37,211,102,.34);transition:transform .25s var(--ease),box-shadow .25s}
+.float-wa:hover{transform:translateY(-3px);box-shadow:0 24px 55px rgba(37,211,102,.45)}
+@media(max-width:900px){
+  nav.top,#nav,nav.top.solid,#nav.solid{top:10px;width:calc(100% - 20px);padding:10px 12px;border-radius:22px}.nav-wa{padding:10px 14px;font-size:.78rem}.hero{border-bottom-left-radius:28px;border-bottom-right-radius:28px}.hero-sub{padding:15px 16px}.hero-title{font-size:clamp(3.2rem,16vw,5rem)}.s,.s-dark,.s-sand,.s-alt{padding:76px 22px}.price-box{padding:30px 24px}.form-card,.box-dark,.box-light{padding:30px 24px}.cta-strip{border-radius:28px 28px 0 0}.float-wa{right:14px;bottom:14px;padding:12px 15px;font-size:.84rem}.mq-row{mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+}
+
+/* fix quick navigation: it must stay in page flow, not fixed like the main navbar */
+.qnav{position:relative!important;top:auto!important;left:auto!important;right:auto!important;transform:none!important;width:100%!important;border-radius:0!important;box-shadow:none!important;background:var(--deep)!important;backdrop-filter:none!important;}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.mq-track{animation:none!important}}
+
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<!-- NAV -->
+<nav class="top" id="nav">
+  <img decoding="async" src="logo.png" alt="Logo Sosta Camper dell'Olmo" class="nav-logo">
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#features">Servizi</a>
+    <a href="index.html#gallery">Galleria</a>
+    <a href="index.html#tariffe">Tariffe</a>
+    <a href="index.html#prenota" class="nav-btn">📝 Prenota</a>
+  </div>
+  <a href="https://wa.me/393206780843" class="nav-wa">💬 WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img decoding="async" src="mare.jpg" alt="Mare cristallino e promontorio a Palinuro">
+  </div>
+  <div class="hero-ov"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span></span>Cilento · Campania · UNESCO</div>
+    <h1 class="hero-title">Scopri<br><em>Palinuro</em></h1>
+    <p class="hero-sub">Promontori a picco sul Tirreno, spiagge Bandiera Blu, sentieri panoramici e calette dal mare cristallino.</p>
+  </div>
+  <div class="hero-ticker">Mare · Storia · Natura · Sapori</div>
+</section>
+
+<!-- QUICK NAV -->
+<nav class="qnav">
+  <a class="chip" href="#storia">Storia e leggenda</a>
+  <a class="chip" href="#qualita">Qualità ambientale</a>
+  <a class="chip" href="#vedere">Cosa vedere</a>
+  <a class="chip" href="#natura">Natura & trekking</a>
+  <a class="chip" href="#attivita">Attività</a>
+  <a class="chip" href="#sapori">Sapori</a>
+  <a class="chip" href="#quando">Quando venire</a>
+</nav>
+
+<!-- STORIA + QUALITÀ -->
+<section class="s-alt" id="storia">
+  <div class="wrap">
+    <div class="dbl">
+      <div class="dbl-l rv-l">
+        <div class="label label-light">Origini mitiche</div>
+        <h2 class="display display-light">Storia e<br><em>leggenda</em></h2>
+        <div class="storia-media">
+          <div class="storia-img">
+            <img decoding="async" src="palinuro-leggenda.jpg" alt="Capo Palinuro">
+          </div>
+          <div class="storia-text">
+            <p class="body-t-light">Il nome di Palinuro deriva dal mitico nocchiero di Enea, narrato da Virgilio nell'<em style="font-style:italic;color:var(--aqua)">Eneide</em>. La leggenda vuole che qui sia approdato e morto il fedele compagno dell'eroe troiano.</p>
+            <p class="body-t-light" style="margin-top:14px">Oltre alla mitologia, il territorio custodisce resti archeologici greci e romani, necropoli e piccoli siti storici visitabili nei dintorni.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dbl-div"></div>
+
+      <div class="dbl-r rv-r" id="qualita" style="padding-left:72px">
+        <div class="label label-light">Tutela e riconoscimenti</div>
+        <h2 class="display display-light">Qualità<br><em>ambientale</em></h2>
+        <div class="q-items">
+          <div class="q-item">
+            <div class="q-dot">🏛️</div>
+            <div>
+              <h4>Parco Nazionale del Cilento</h4>
+              <p>Tesoro UNESCO che custodisce coste incontaminate, falesie scenografiche e una biodiversità unica nel Mediterraneo.</p>
+            </div>
+          </div>
+          <div class="q-item">
+            <div class="q-dot">🏖️</div>
+            <div>
+              <h4>Bandiere Blu</h4>
+              <p>Spiagge premiate come le Saline e il Buon Dormire, simbolo di mare cristallino e gestione ambientale virtuosa.</p>
+            </div>
+          </div>
+          <div class="q-item">
+            <div class="q-dot">🌿</div>
+            <div>
+              <h4>Habitat protetti</h4>
+              <p>Falesie imponenti, macchia mediterranea profumata e fondali trasparenti che rivelano una ricchissima vita marina.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COSA VEDERE -->
+<section class="s" id="vedere">
+  <div class="wrap">
+    <div class="poi-header rv">
+      <div>
+        <div class="label">Attrazioni principali</div>
+        <h2 class="display">Cosa vedere<br><em>a Palinuro</em></h2>
+      </div>
+      <p class="body-t" style="max-width:340px">Sei luoghi da non perdere, ognuno con la sua magia unica.</p>
+    </div>
+
+    <div class="poi-grid">
+      <div class="poi rv">
+        <div class="poi-img">
+          <img decoding="async" src="arco.jpg" alt="Arco Naturale di Palinuro">
+        </div>
+        <div>
+          <div class="poi-num">01 — Palinuro</div>
+          <h3>Arco Naturale</h3>
+          <p>Simbolo iconico di Palinuro, questa maestosa scultura di roccia si erge come una porta sul mare, incorniciando un panorama di rara suggestione. Al tramonto si accende di riflessi dorati e rossastri, regalando scenari indimenticabili.</p>
+        </div>
+      </div>
+
+      <div class="poi rv">
+        <div class="poi-img">
+          <img decoding="async" src="mare.jpg" alt="Porto e costa di Palinuro" loading="lazy">
+        </div>
+        <div>
+          <div class="poi-num">02 — Palinuro</div>
+          <h3>Porto e centro di Palinuro</h3>
+          <p>Il punto più vivo del borgo: passeggiate serali, bar, ristorantini, gelaterie e quell'atmosfera semplice da paese di mare. Perfetto per chi vuole uscire dall'area camper e godersi Palinuro senza complicarsi la giornata.</p>
+        </div>
+      </div>
+
+      <div class="poi rv">
+        <div class="poi-img">
+          <img decoding="async" src="buondormire.jpg" alt="Baia del Buon Dormire" loading="lazy" style="object-position:50% 70%">
+        </div>
+        <div>
+          <div class="poi-num">03 — Palinuro</div>
+          <h3>Baia del Buon Dormire</h3>
+          <p>Sabbia dorata, mare cristallino e lo scenario maestoso di Capo Palinuro a fare da sfondo. Riconosciuta con la Bandiera Blu, è un'oasi ideale per il relax delle famiglie e i tuffi in acque protette.</p>
+        </div>
+      </div>
+
+      <div class="poi rv">
+        <div class="poi-img">
+          <img decoding="async" src="capo.jpg" alt="Capo Palinuro" loading="lazy">
+        </div>
+        <div>
+          <div class="poi-num">04 — Palinuro</div>
+          <h3>Capo Palinuro</h3>
+          <p>Promontorio scenografico con sentieri a picco sul Tirreno, immerso nella macchia mediterranea profumata. Luogo ideale per escursioni e per ammirare tramonti mozzafiato dai colori che restano impressi negli occhi.</p>
+        </div>
+      </div>
+
+      <div class="poi rv">
+        <div class="poi-img">
+          <img decoding="async" src="arco.jpg" alt="Spiaggia delle Saline" loading="lazy">
+        </div>
+        <div>
+          <div class="poi-num">05 — Palinuro</div>
+          <h3>Spiaggia delle Saline</h3>
+          <p>Una distesa infinita di sabbia dorata, ideale per lunghe passeggiate sul bagnasciuga, nuotate rigeneranti e ampi spazi dove rilassarsi lontano dalla folla, in ogni momento della stagione.</p>
+        </div>
+      </div>
+
+      <div class="poi rv">
+        <div class="poi-img">
+          <img decoding="async" src="mare.jpg" alt="Marina di Camerota" loading="lazy">
+        </div>
+        <div>
+          <div class="poi-num">06 — Vicino a Palinuro</div>
+          <h3>Marina di Camerota</h3>
+          <p>A pochi minuti da Palinuro, con calette celebri come Cala Bianca, mare straordinariamente trasparente e l'atmosfera autentica di un borgo marinaro che vive ancora al ritmo del mare.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TREKKING -->
+<section class="s" id="natura">
+  <div class="wrap">
+    <div class="rv">
+      <div class="label">Fuori dall'acqua</div>
+      <h2 class="display">Natura &<br><em>trekking</em></h2>
+      <p class="body-t" style="margin-top:16px;max-width:520px">Palinuro non è solo mare. Sentieri panoramici, macchia mediterranea e viste sul Tirreno che restano impresse negli occhi per sempre.</p>
+    </div>
+    <div class="trek-list rv" data-d="2">
+      <div class="trek-item">
+        <div class="trek-left">
+          <div class="trek-icon">🏔️</div>
+          <div>
+            <div class="trek-name">Capo Palinuro</div>
+            <div class="trek-desc">Promontorio panoramico con vista sul Tirreno · 2–3h</div>
+          </div>
+        </div>
+        <span class="trek-tag">Facile</span>
+      </div>
+      <div class="trek-item">
+        <div class="trek-left">
+          <div class="trek-icon">🏰</div>
+          <div>
+            <div class="trek-name">Sentiero dei Fortini Borbonici</div>
+            <div class="trek-desc">Camminata storica lungo la costa · 3–4h</div>
+          </div>
+        </div>
+        <span class="trek-tag">Medio</span>
+      </div>
+      <div class="trek-item">
+        <div class="trek-left">
+          <div class="trek-icon">⛰️</div>
+          <div>
+            <div class="trek-name">Monte Bulgheria</div>
+            <div class="trek-desc">Trekking impegnativo con vedute profonde · 5–7h</div>
+          </div>
+        </div>
+        <span class="trek-tag">Difficile</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ATTIVITÀ + SAPORI -->
+<section class="s-sand" id="attivita">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="box-dark rv-l">
+        <div class="label label-light">Sport e avventura</div>
+        <h2 class="display display-light" style="font-size:2.2rem">Attività<br><em>& sport</em></h2>
+        <div class="pills">
+          <div class="pill">🚤 Tour costa e tramonto</div>
+          <div class="pill">🤿 Snorkeling e diving</div>
+          <div class="pill">🛶 Kayak lungo costa</div>
+          <div class="pill">🚴 Mountain bike</div>
+          <div class="pill">🎣 Pesca sportiva</div>
+          <div class="pill">🧗 Climbing</div>
+        </div>
+      </div>
+
+      <div class="box-light rv-r" id="sapori">
+        <div class="label">Gastronomia locale</div>
+        <h2 class="display" style="font-size:2.2rem">Sapori del<br><em>Cilento</em></h2>
+        <div class="sapori-list">
+          <div class="sapore">
+            <div class="sapore-dot"></div>
+            <div class="sapore-txt"><strong>Alici di Menaica</strong><span>Presidio Slow Food · pescate con reti tradizionali</span></div>
+          </div>
+          <div class="sapore">
+            <div class="sapore-dot"></div>
+            <div class="sapore-txt"><strong>Pesce fresco locale</strong><span>In ricette tradizionali cilentane</span></div>
+          </div>
+          <div class="sapore">
+            <div class="sapore-dot"></div>
+            <div class="sapore-txt"><strong>Fichi bianchi del Cilento</strong><span>DOP · dolcissimi e profumati</span></div>
+          </div>
+          <div class="sapore">
+            <div class="sapore-dot"></div>
+            <div class="sapore-txt"><strong>Aglianico e Fiano</strong><span>Vini locali di carattere profondo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUANDO VENIRE -->
+<section class="s" id="quando">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:56px;text-align:center">
+      <div class="label" style="justify-content:center">Pianifica il tuo viaggio</div>
+      <h2 class="display" style="text-align:center">Quando<br><em>venire</em></h2>
+    </div>
+    <div class="stagioni rv" data-d="2">
+      <div class="stagione st-1">
+        <div class="st-month">Mag – Giu</div>
+        <div class="st-temp">~ 20–26 °C</div>
+        <p class="st-desc">Giornate luminose, profumo di macchia mediterranea e i primi tuffi in acque ancora tranquille.</p>
+      </div>
+      <div class="stagione st-2">
+        <div class="st-month">Luglio</div>
+        <div class="st-temp">~ 24–30 °C</div>
+        <p class="st-desc">Acqua calma e trasparente: il momento ideale per snorkeling, kayak e giornate lente tra spiagge e calette.</p>
+      </div>
+      <div class="stagione st-3">
+        <div class="st-month">Agosto</div>
+        <div class="st-temp">~ 26–32 °C</div>
+        <p class="st-desc">Estate piena: giornate lunghe, mare caldo e serate animate dall'energia del borgo marinaro.</p>
+      </div>
+      <div class="stagione st-4">
+        <div class="st-month">Settembre</div>
+        <div class="st-temp">~ 22–28 °C</div>
+        <p class="st-desc">Il periodo più dolce: ritmo lento, mare ancora tiepido e la costa torna a respirare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <h2>Pronto a<br><em>partire?</em></h2>
+  <div class="cta-btns">
+    <a href="https://wa.me/393206780843" class="btn btn-w">💬 Chiedi disponibilità</a>
+    <a href="index.html#prenota" class="btn btn-ghost">📝 Prenota online</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img decoding="async" src="logo.png" alt="Logo" class="f-logo">
+  <p>© 2025 Sosta Camper dell'Olmo · Via Acqua dell'Olmo, 8 · Palinuro (SA)</p>
+  <div class="f-links">
+    <a href="index.html">Home</a>
+    <a href="tel:+393206780843">320 678 0843</a>
+    <a href="mailto:cep.palinuro@gmail.com">Email</a>
+    <a href="https://www.instagram.com/sosta_camper_palinuro" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+<script>
+// cursor
+const C=document.getElementById('cur'),R=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;C.style.left=mx+'px';C.style.top=my+'px'});
+(function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;R.style.left=rx+'px';R.style.top=ry+'px';requestAnimationFrame(anim)})();
+document.querySelectorAll('a,button,.chip,.trek-item,.stagione').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{C.style.width='18px';C.style.height='18px';R.style.width='52px';R.style.height='52px';R.style.borderColor='var(--gold)'});
+  el.addEventListener('mouseleave',()=>{C.style.width='10px';C.style.height='10px';R.style.width='36px';R.style.height='36px';R.style.borderColor='var(--sea)'});
+});
+
+// nav
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60));
+
+// reveal
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>io.observe(el));
+</script>
+<a class="float-wa" href="https://wa.me/393206780843" aria-label="Prenota su WhatsApp">💬 WhatsApp</a>
+</body>
+</html>
